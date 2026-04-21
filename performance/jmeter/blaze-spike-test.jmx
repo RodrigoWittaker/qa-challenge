@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BlazeDemo Spike Test" enabled="true">
+    </TestPlan>
+    <hashTree>
+
+```
+  <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Spike 500 Users" enabled="true">
+    <stringProp name="ThreadGroup.num_threads">500</stringProp>
+    <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+    <stringProp name="ThreadGroup.loop_count">3</stringProp>
+  </ThreadGroup>
+
+  <hashTree/>
+</hashTree>
+```
+
+  </hashTree>
+</jmeterTestPlan>

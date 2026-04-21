@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="BlazeDemo Load Test" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    </TestPlan>
+    <hashTree>
+
+```
+  <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="250 Users Load" enabled="true">
+    <stringProp name="ThreadGroup.num_threads">250</stringProp>
+    <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+    <boolProp name="ThreadGroup.scheduler">false</boolProp>
+    <stringProp name="ThreadGroup.loop_count">5</stringProp>
+  </ThreadGroup>
+
+  <hashTree>
+
+    <!-- HOME -->
+    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Home" enabled="true">
+      <stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+      <stringProp name="HTTPSampler.protocol">https</stringProp>
+      <stringProp name="HTTPSampler.path">/</stringProp>
+      <stringProp name="HTTPSampler.method">GET</stringProp>
+    </HTTPSamplerProxy>
+
+    <hashTree/>
+
+    <!-- SEARCH -->
+    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Buscar Voos" enabled="true">
+      <stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+      <stringProp name="HTTPSampler.protocol">https</stringProp>
+      <stringProp name="HTTPSampler.path">/reserve.php</stringProp>
+      <stringProp name="HTTPSampler.method">POST</stringProp>
+      <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="fromPort" elementType="HTTPArgument">
+            <stringProp name="Argument.value">Paris</stringProp>
+          </elementProp>
+          <elementProp name="toPort" elementType="HTTPArgument">
+            <stringProp name="Argument.value">Buenos Aires</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+    </HTTPSamplerProxy>
+
+    <hashTree/>
+
+    <!-- PURCHASE -->
+    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Compra" enabled="true">
+      <stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+      <stringProp name="HTTPSampler.protocol">https</stringProp>
+      <stringProp name="HTTPSampler.path">/purchase.php</stringProp>
+      <stringProp name="HTTPSampler.method">POST</stringProp>
+    </HTTPSamplerProxy>
+
+    <hashTree/>
+
+    <!-- CONFIRM -->
+    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Confirmacao" enabled="true">
+      <stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+      <stringProp name="HTTPSampler.protocol">https</stringProp>
+      <stringProp name="HTTPSampler.path">/confirmation.php</stringProp>
+      <stringProp name="HTTPSampler.method">POST</stringProp>
+    </HTTPSamplerProxy>
+
+    <hashTree>
+      <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Valida Compra" enabled="true">
+        <collectionProp name="Asserion.test_strings">
+          <stringProp name="0">Thank you for your purchase</stringProp>
+        </collectionProp>
+        <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+        <intProp name="Assertion.test_type">2</intProp>
+      </ResponseAssertion>
+      <hashTree/>
+    </hashTree>
+
+  </hashTree>
+</hashTree>
+```
+
+  </hashTree>
+</jmeterTestPlan>
