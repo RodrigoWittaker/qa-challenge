@@ -10,8 +10,8 @@ Projeto realizado para o desafio Agibank
 * Selenium WebDriver
 * JUnit 5
 * WebDriverManager
-* RestAssured
 * Maven
+* RestAssured
 
 ---
 
@@ -21,81 +21,70 @@ Automatizar cenários de busca no site:
 
 https://blog.agibank.com.br/
 
-Validando comportamentos com e sem retorno de resultados, tanto em testes de interface (UI) quanto em testes de API.
-
----
-
-## Estrutura do Projeto
-
-```plaintext
-src/test/java
-│
-├── base        → configuração base dos testes UI
-├── pages       → Page Objects (Selenium)
-├── tests       → testes de UI
-│
-└── api
-    ├── base    → configuração base da API
-    ├── client  → camada de comunicação (RestAssured)
-    └── tests   → testes de API
-```
+E validar endpoints de API utilizando testes automatizados.
 
 ---
 
 ## Cenários implementados
 
-### UI - Busca com resultados
+### Front-end (UI)
 
-* Acessa o site
-* Clica na lupa de busca
-* Realiza uma busca válida
-* Valida que existem resultados
+* Busca com resultados
+* Busca sem resultados
 
-### UI - Busca sem resultados
+### API
 
-* Acessa o site
-* Clica na lupa de busca
-* Realiza uma busca inválida
-* Valida que não existem resultados
+* Listar raças (GET /breeds/list/all)
+* Buscar imagens por raça (GET /breed/{breed}/images)
+* Buscar imagem aleatória (GET /breeds/image/random)
+* Validação de erro para raça inválida
 
 ---
 
-### API - Busca com resultados
+## Configuração do ambiente
 
-* Realiza requisição GET para API de posts
-* Valida status code 200
-* Valida que existem resultados retornados
-
-### API - Busca sem resultados (comportamento real da API)
-
-* Realiza busca com termo inválido
-* Valida status code 200
-* Valida estrutura da resposta retornada
-
----
-
-## Como executar o projeto
-
-### Via IntelliJ
-
-* Clique com o botão direito na classe de teste
-* Selecione Run
-
-### Via Maven (terminal)
+1. Instalar o Java 17
+2. Instalar o Maven
+3. Clonar o repositório:
 
 ```bash
-mvn clean test
+git clone https://github.com/seu-usuario/qa-challenge.git
 ```
+
+4. Abrir o projeto no IntelliJ
+
+5. Aguardar o Maven baixar as dependências automaticamente
+
+---
+
+## Como executar os testes
+
+### Executar todos os testes
+
+* Clique com botão direito na classe desejada (ex: DogApiTest ou BuscaSemResultadoTest)
+* Selecione **Run**
+
+### Executar via Maven (opcional)
+
+```bash
+mvn test
+```
+
+---
+
+## Relatório de execução
+
+Os resultados dos testes são exibidos no console do IntelliJ ou terminal, contendo:
+
+* Testes executados
+* Testes aprovados
+* Testes com buscando coisas que não existem
+* Detalhes de erro
 
 ---
 
 ## Observações
 
-* O projeto segue o padrão Page Object Model (POM) para testes UI
-* Os testes de API utilizam RestAssured com separação em camadas (base, client e testes)
-* Estrutura pensada para escalabilidade e boas práticas de automação
-
----
-
-## Autor
-## Rodrigo Wittaker
+* O projeto segue o padrão Page Object Model para testes de UI
+* Para API, foi utilizado RestAssured
+* Inclui cenários positivos e negativos para maior cobertura
