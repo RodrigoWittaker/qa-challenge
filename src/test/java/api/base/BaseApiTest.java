@@ -7,6 +7,6 @@ public class BaseApiTest {
 
     @BeforeAll
     public static void setup() {
-        RestAssured.baseURI = "https://blogdoagi.com.br";
+        RestAssured.baseURI = "https://dog.ceo/api";
     }
 }
